@@ -1,6 +1,19 @@
+// Button clicked
 for (let i = 0; i < document.querySelectorAll('.drum').length; i++) {
     document.querySelectorAll('.drum')[i].addEventListener("click", function () {
-        switch (this.innerHTML) {
+        let buttonInnerHtml = this.innerHTML;
+        makeSound(buttonInnerHtml);
+
+    });
+
+    //Key pressed
+    document.addEventListener('keydown', function (event) {
+        makeSound(event.key);
+    });
+
+    // make sound
+    function makeSound(key) {
+        switch (key) {
             case 'w':
                 audio = new Audio('sounds/tom-1.mp3');
                 break
@@ -24,5 +37,7 @@ for (let i = 0; i < document.querySelectorAll('.drum').length; i++) {
                 break
         }
         audio.play();
-    });
+
+
+    }
 }
